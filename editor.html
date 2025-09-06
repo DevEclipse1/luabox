@@ -1,0 +1,162 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>LuaBox</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.15.0/ace.js"></script>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      width: 100%;
+      font-family: Arial, sans-serif;
+      background: #1e1e1e;
+      color: #eee;
+      overflow: hidden;
+    }
+
+    #container {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    #header {
+      padding: 10px 20px;
+      background: #111;
+      text-shadow: 0 0 5px #00bfff;
+      color: #00bfff;
+    }
+
+    #editor {
+      flex: 1;
+      margin: 10px 20px 0 20px;
+      border: 1px solid #00bfff;
+      box-shadow: 0 0 8px #00bfff;
+      border-radius: 4px;
+    }
+
+    #controls {
+      display: flex;
+      padding: 10px 20px;
+      background: #111;
+    }
+
+    button {
+      background: #00bfff;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      margin-right: 10px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+      box-shadow: 0 0 6px #00bfff;
+    }
+
+    button:disabled {
+      background: #555;
+      cursor: not-allowed;
+      opacity: 0.7;
+      box-shadow: 0 0 4px #555;
+    }
+
+    #log {
+      height: 200px;
+      margin: 0 20px 10px 20px;
+      background: #111;
+      color: #0f0;
+      padding: 10px;
+      font-family: monospace;
+      white-space: pre-wrap;
+      overflow-y: auto;
+      box-shadow: inset 0 0 6px #0f0;
+      border-radius: 4px;
+      position: relative;
+    }
+
+    #log::after {
+      content: "|";
+      position: absolute;
+      right: 10px;
+      bottom: 10px;
+      color: #0f0;
+      animation: blink 1s step-start infinite;
+    }
+
+    @keyframes blink {
+      0%, 50% { opacity: 1; }
+      51%, 100% { opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+  <div id="container">
+    <div id="header">
+      <h3>LuaBox Editor</h3>
+    </div>
+    <div id="editor"></div>
+    <div id="controls">
+      <button id="connect">Connect</button>
+      <button id="send" disabled>Send</button>
+    </div>
+    <div id="log"></div>
+  </div>
+
+  <script>
+    let port, writer, reader;
+
+    const editor = ace.edit("editor");
+    editor.setTheme("ace/theme/monokai");
+    editor.session.setMode("ace/mode/lua");
+    editor.setOptions({
+      fontSize: "14pt",
+      showPrintMargin: false
+    });
+
+    function log(msg) {
+      const logEl = document.getElementById('log');
+      logEl.textContent += msg + "\n";
+      logEl.scrollTop = logEl.scrollHeight;
+    }
+
+    document.getElementById('connect').onclick = async () => {
+      try {
+        port = await navigator.serial.requestPort();
+        await port.open({ baudRate: 115200 });
+        log("Connected");
+        document.getElementById('send').disabled = false;
+
+        const decoder = new TextDecoderStream();
+        port.readable.pipeTo(decoder.writable);
+        reader = decoder.readable.getReader();
+        (async () => {
+          while (true) {
+            const { value, done } = await reader.read();
+            if (done) break;
+            if (value) log(value);
+          }
+        })();
+      } catch (e) {
+        log("Error: " + e);
+      }
+    };
+
+    document.getElementById('send').onclick = async () => {
+      try {
+        const code = editor.getValue() + "<<<END>>>";
+        const encoder = new TextEncoder();
+        writer = port.writable.getWriter();
+        await writer.write(encoder.encode(code));
+        writer.releaseLock();
+        log("Sent " + code.length + " bytes");
+      } catch (e) {
+        log("Send error: " + e);
+      }
+    };
+  </script>
+</body>
+</html>
