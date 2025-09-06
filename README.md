@@ -12,6 +12,15 @@
 
 ---
 
+---
+
+## SD card setup
+
+- For the firmware to work, you need a SD card connected to the ESP32, and you need to create some folders
+- Create a folder called **games** (the .lua games you will see in the main menu) and **assets** (for images, gifs, data)
+  
+---
+
 ## Contributing
 - Fork the repo and create your own games or improvements.  
 - Keep the project name **LuaBox** intact in your forks.  
