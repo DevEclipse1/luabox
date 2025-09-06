@@ -6,9 +6,7 @@
 
 ## Showcase
 
-
-[Showcase](showcase.mp4)
-
+![Showcase](https://github.com/user-attachments/assets/aff2d055-856f-4257-bef0-44bcc7c847dc)
 
 ---
 
