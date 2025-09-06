@@ -2,6 +2,8 @@
 
 **LuaBox** is a compact mini gaming console powered by the **ESP32**, featuring custom firmware and PCB design. It lets you program games and applications in **Lua**, offering a portable DIY retro gaming experience.  
 
+More info, games, PCB with BOM, and my community on my [Discord Server](https://discord.gg/zw5j3vHJ2a)
+
 ---
 
 ## Showcase
