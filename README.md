@@ -4,6 +4,16 @@
 
 ---
 
+## Showcase
+
+
+![Showcase](https://github.com/user-attachments/assets/9f8813c5-39a7-447d-ac50-f323a476c111)
+
+
+---
+
+---
+
 ## Docs
 [Documentation available here](https://deveclipse1.github.io/luabox/index.html)
 
