@@ -7,7 +7,7 @@
 ## Showcase
 
 
-![Showcase](showcase.mp4)
+[Showcase](showcase.mp4)
 
 
 ---
