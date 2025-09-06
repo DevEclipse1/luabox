@@ -7,7 +7,7 @@
 ## Showcase
 
 
-![Showcase](https://github-production-user-asset-6210df.s3.amazonaws.com/98752478/486426650-9f8813c5-39a7-447d-ac50-f323a476c111.mp4?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20250906%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20250906T142625Z&X-Amz-Expires=300&X-Amz-Signature=7dcd8afdd815ba6c509512ed2e25db14463e79443def9ac0699b5727d98c70c3&X-Amz-SignedHeaders=host)
+![Showcase](https://www.tiktok.com/@deveclipse1/video/7546914210924481814)
 
 
 ---
