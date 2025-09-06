@@ -124,17 +124,8 @@ void main_menu_loop()
 
         sprite.fillSprite(TFT_BLACK);
 
-        int barHeight = sprite.fontHeight() + 4;
-
-        for (int i = 0; i < sprite.width(); ++i)
-        {
-            uint16_t color = sprite.color565(
-                (sin(i * 0.05) * 127 + 128),
-                (sin(i * 0.05 + 2.094) * 127 + 128),
-                (sin(i * 0.05 + 4.188) * 127 + 128)
-            );
-            sprite.drawFastVLine(i, 0, barHeight, color);
-        }
+        int barHeight = sprite.fontHeight() + 2;
+        sprite.fillRect(0, 0, tft.width(), barHeight, 0x701f);
 
         sprite.setTextColor(0xffff);
         sprite.setTextSize(1);
@@ -175,7 +166,7 @@ void main_menu_loop()
             int y_pos = y_offset + idx * sprite.fontHeight() - 2;
 
             if (i == main_menu_selected_index)
-                sprite.drawRect(0, y_pos, sprite.width(), sprite.fontHeight() - 1, TFT_YELLOW);
+                sprite.drawRect(0, y_pos, sprite.width(), sprite.fontHeight() - 1, 0x701f);
 
             sprite.setCursor(x_offset, y_pos + 1);
             sprite.setTextColor(0xffff);
