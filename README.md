@@ -12,6 +12,11 @@
 
 ---
 
+## Pinouts
+
+- You can change the pinout in [The pins file](src/pins.h)
+- And for the display pins, change in .pio/libdeps/board/TFT_eSPI/User_Setup.h
+
 ---
 
 ## SD card setup
