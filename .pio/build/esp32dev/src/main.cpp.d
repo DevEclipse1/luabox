@@ -243,5 +243,5 @@
  src/api/ButtonWaitRelease.h src/api/Sleep.h src/api/ButtonDown.h \
  src/api/AnyButtonDown.h src/api/RGB.h src/api/HSV.h src/api/Yield.h \
  src/api/Gif.h src/api/../gif.h \
- .pio/libdeps/esp32dev/AnimatedGIF/src/AnimatedGIF.h src/main_menu.h \
- src/loader.h src/serialcontrol.h
+ .pio/libdeps/esp32dev/AnimatedGIF/src/AnimatedGIF.h src/api/Millis.h \
+ src/api/ScriptMillis.h src/main_menu.h src/loader.h src/serialcontrol.h
