@@ -10,7 +10,7 @@
  * @return int Pushes no values to Lua stack.
  */
 
-int api_ButtonWaitRelease(lua_State* L_)
+int ButtonWaitRelease(lua_State* L_)
 {
     const char* b = luaL_checkstring(L_, 1);
     

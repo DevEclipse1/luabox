@@ -11,7 +11,7 @@
  *         - "y": height of the display in pixels
  */
 
-int api_DisplaySize(lua_State* L)
+int DisplaySize(lua_State* L)
 {
     lua_newtable(L);
 

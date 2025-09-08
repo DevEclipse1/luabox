@@ -6,6 +6,7 @@
 #include "lua_include.h"
 #include "display.h"
 #include "sdcard.h"
+#include "api/ScriptMillis.h"
 
 volatile bool stop_game = false;
 volatile bool game_running = false;
@@ -19,6 +20,18 @@ void loader_stop_hook(lua_State* L_, lua_Debug* ar)
     }
 }
 
+struct LuaStream {
+    File f;
+    char buffer[128];
+};
+
+const char* lua_stream_reader(lua_State* L, void* data, size_t* size)
+{
+    LuaStream* s = (LuaStream*)data;
+    *size = s->f.readBytes(s->buffer, sizeof(s->buffer));
+    return (*size > 0) ? s->buffer : NULL;
+}
+
 void lua_task(void* pvParameters)
 {
     sprite.fillSprite(TFT_BLACK);
@@ -29,8 +42,6 @@ void lua_task(void* pvParameters)
     lua_init();
     lua_sethook(L, loader_stop_hook, LUA_MASKCOUNT, 10);
 
-    int w = TFT_WIDTH;
-    int h = TFT_HEIGHT;
     const char* error_msg = NULL;
 
     File f = SD.open(path, FILE_READ);
@@ -38,29 +49,17 @@ void lua_task(void* pvParameters)
         display_draw_error("Failed to open file");
         display_draw_error(path);
     } else {
-        size_t size = f.size();
-        char* buffer = (char*)malloc(size + 1);
-        if (!buffer) {
-            display_draw_error("Out of memory");
-        } else {
-            f.readBytes(buffer, size);
-            buffer[size] = '\0';
+        LuaStream s { f };
 
-            int status = luaL_loadstring(L, buffer);
-            if (status == LUA_OK) {
-                status = lua_pcall(L, 0, LUA_MULTRET, 0);
-            }
-
-            if (status != LUA_OK) {
-                const char* err = lua_tostring(L, -1);
-                if (err && strcmp(err, "STOP") != 0) {
-                    error_msg = err;
-                }
-                lua_pop(L, 1);
-            }
-
-            free(buffer);
+        reset_script_time();
+        int status = lua_load(L, lua_stream_reader, &s, path, NULL);
+        if (status == LUA_OK) status = lua_pcall(L, 0, LUA_MULTRET, 0);
+        if (status != LUA_OK) {
+            const char* err = lua_tostring(L, -1);
+            if (err && strcmp(err, "STOP") != 0) error_msg = err;
+            lua_pop(L, 1);
         }
+
         f.close();
     }
 
@@ -71,10 +70,7 @@ void lua_task(void* pvParameters)
         display_draw_error(error_msg);
 
         vTaskDelay(100 / portTICK_PERIOD_MS);
-
-        while (buttons_read(SELECT)) {
-            vTaskDelay(10 / portTICK_PERIOD_MS);
-        }
+        while (buttons_read(SELECT)) vTaskDelay(10 / portTICK_PERIOD_MS);
     }
 
     lua_sethook(L, NULL, 0, 0);
@@ -82,8 +78,8 @@ void lua_task(void* pvParameters)
         lua_close(L);
         L = NULL;
     }
-    game_running = false;
 
+    game_running = false;
     vTaskDelete(NULL);
 }
 
@@ -91,7 +87,7 @@ void loader_start_game_threaded(const char* path)
 {
     stop_game = false;
     game_running = true;
-    BaseType_t result = xTaskCreatePinnedToCore(
+    xTaskCreatePinnedToCore(
         lua_task,
         "LuaTask",
         65536,

@@ -9,7 +9,7 @@
  * @return int Pushes no values to Lua stack.
  */
 
-int api_Sleep(lua_State* L_)
+int Sleep(lua_State* L_)
 {
     int t = luaL_checkinteger(L_, 1);
     vTaskDelay(pdMS_TO_TICKS(t));

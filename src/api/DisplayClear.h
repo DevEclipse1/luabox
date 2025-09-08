@@ -9,7 +9,7 @@
  * @return int Pushes no values to Lua stack.
  */
 
-int api_DisplayClear(lua_State* L_)
+int DisplayClear(lua_State* L_)
 {
     int c = luaL_optinteger(L_, 1, 0x0);
 

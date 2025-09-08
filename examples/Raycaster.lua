@@ -13,7 +13,11 @@ local map = {
 local player = {x = 6.0, y = 6.0, dir_x = -1.0, dir_y = 0.0}
 local plane_x, plane_y = 0, 0.66
 local display_size = DisplaySize()
+<<<<<<< HEAD
 local move_speed, rot_speed = 0.05, 0.05
+=======
+local move_speed, rot_speed = 0.08, 0.15
+>>>>>>> f01e5a9 (updated raycaster, added ScriptMillis and Millis, api refactor)
 local map_size = 9
 local minimap_scale = 2
 local minimap_offset_x, minimap_offset_y = 2, 2

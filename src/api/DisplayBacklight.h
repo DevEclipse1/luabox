@@ -10,7 +10,7 @@
  * @return int Pushes no values to Lua stack.
  */
 
-int api_DisplayBacklight(lua_State* L_)
+int DisplayBacklight(lua_State* L_)
 {
     backlight_set(luaL_checkinteger(L_, 1));
     return 0;
