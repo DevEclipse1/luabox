@@ -4,3 +4,4 @@
 .vscode/ipch
 .vscode
 .continue
+.pio/build/
