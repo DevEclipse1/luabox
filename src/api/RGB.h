@@ -13,7 +13,7 @@
  * @note The returned color is in 16-bit RGB565 format.
  */
 
-int api_RGB(lua_State* L_)
+int RGB(lua_State* L_)
 {
     int r = luaL_checkinteger(L_, 1);
     int g = luaL_checkinteger(L_, 2);

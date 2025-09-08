@@ -10,7 +10,7 @@
  * @return int Pushes 1 boolean to Lua stack: true if pressed, false otherwise.
  */
 
-int api_ButtonDown(lua_State* L_)
+int ButtonDown(lua_State* L_)
 {
     const char* b = luaL_checkstring(L_, 1);
     

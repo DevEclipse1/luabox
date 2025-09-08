@@ -14,7 +14,7 @@
  * @note The returned color is in 16-bit RGB565 format.
  */
 
-int api_HSV(lua_State* L_)
+int HSV(lua_State* L_)
 {
     double h = luaL_checknumber(L_, 1);
     double s = luaL_checknumber(L_, 2);

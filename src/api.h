@@ -20,63 +20,71 @@
 #include "api/HSV.h"
 #include "api/Yield.h"
 #include "api/Gif.h"
+#include "api/Millis.h"
+#include "api/ScriptMillis.h"
 
 void api_register_functions()
 {
     // display stuff
 
-    lua_pushcfunction(L, api_DisplayClear);
+    lua_pushcfunction(L, DisplayClear);
     lua_setglobal(L, "DisplayClear");
 
-    lua_pushcfunction(L, api_DisplayPixel);
+    lua_pushcfunction(L, DisplayPixel);
     lua_setglobal(L, "DisplayPixel");
 
-    lua_pushcfunction(L, api_DisplayClear);
+    lua_pushcfunction(L, DisplayClear);
     lua_setglobal(L, "DisplayClear");
 
-    lua_pushcfunction(L, api_DisplayLine);
+    lua_pushcfunction(L, DisplayLine);
     lua_setglobal(L, "DisplayLine");
 
-    lua_pushcfunction(L, api_DisplayLineH);
+    lua_pushcfunction(L, DisplayLineH);
     lua_setglobal(L, "DisplayLineH");
 
-    lua_pushcfunction(L, api_DisplayLineV);
+    lua_pushcfunction(L, DisplayLineV);
     lua_setglobal(L, "DisplayLineV");
 
-    lua_pushcfunction(L, api_DisplayPrint);
+    lua_pushcfunction(L, DisplayPrint);
     lua_setglobal(L, "DisplayPrint");
 
-    lua_pushcfunction(L, api_DisplaySize);
+    lua_pushcfunction(L, DisplaySize);
     lua_setglobal(L, "DisplaySize");
 
-    lua_pushcfunction(L, api_DisplayBacklight);
+    lua_pushcfunction(L, DisplayBacklight);
     lua_setglobal(L, "DisplayBacklight");
 
-    lua_pushcfunction(L, api_DisplayDraw);
+    lua_pushcfunction(L, DisplayDraw);
     lua_setglobal(L, "DisplayDraw");
 
     // common
 
-    lua_pushcfunction(L, api_ButtonDown);
+    lua_pushcfunction(L, ButtonDown);
     lua_setglobal(L, "ButtonDown");
 
-    lua_pushcfunction(L, api_AnyButtonDown);
+    lua_pushcfunction(L, AnyButtonDown);
     lua_setglobal(L, "AnyButtonDown");
 
-    lua_pushcfunction(L, api_ButtonWaitRelease);
+    lua_pushcfunction(L, ButtonWaitRelease);
     lua_setglobal(L, "ButtonWaitRelease");
 
-    lua_pushcfunction(L, api_Sleep);
+    lua_pushcfunction(L, Sleep);
     lua_setglobal(L, "Sleep");
 
-    lua_pushcfunction(L, api_RGB);
+    lua_pushcfunction(L, RGB);
     lua_setglobal(L, "RGB");
 
-    lua_pushcfunction(L, api_HSV);
+    lua_pushcfunction(L, HSV);
     lua_setglobal(L, "HSV");
 
-    lua_pushcfunction(L, api_Yield);
+    lua_pushcfunction(L, Yield);
     lua_setglobal(L, "Yield");
+
+    lua_pushcfunction(L, Millis);
+    lua_setglobal(L, "Millis");
+
+    lua_pushcfunction(L, ScriptMillis);
+    lua_setglobal(L, "ScriptMillis");
 
     // gif
 

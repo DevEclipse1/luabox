@@ -4,7 +4,7 @@
 #include "global.h"
 #include "../gif.h"
 
-int api_GifCreate(lua_State* L)
+int GifCreate(lua_State* L)
 {
     const char* path = luaL_checkstring(L, 1);
     int x = luaL_checkinteger(L, 2);
@@ -19,25 +19,18 @@ int api_GifCreate(lua_State* L)
     return 1;
 }
 
-int api_GifPlayAsync(lua_State* L)
+int GifPlayAsync(lua_State* L)
 {
     Gif* gif = *(Gif**)luaL_checkudata(L, 1, "LuaGif");
     gif->PlayAsync();
     return 0;
 }
 
-int api_GifStop(lua_State* L)
+int GifStop(lua_State* L)
 {
     Gif* gif = *(Gif**)luaL_checkudata(L, 1, "LuaGif");
     gif->Stop();
     return 0;
-}
-
-int api_GifGetFrameCount(lua_State* L)
-{
-    Gif* gif = *(Gif**)luaL_checkudata(L, 1, "LuaGif");
-    lua_pushinteger(L, gif->GetFrameCount());
-    return 1;
 }
 
 void RegisterGifLua(lua_State* L)
@@ -47,16 +40,13 @@ void RegisterGifLua(lua_State* L)
         lua_pushvalue(L, -1);
         lua_setfield(L, -2, "__index");
 
-        lua_pushcfunction(L, api_GifPlayAsync);
+        lua_pushcfunction(L, GifPlayAsync);
         lua_setfield(L, -2, "PlayAsync");
 
-        lua_pushcfunction(L, api_GifStop);
+        lua_pushcfunction(L, GifStop);
         lua_setfield(L, -2, "Stop");
-
-        lua_pushcfunction(L, api_GifGetFrameCount);
-        lua_setfield(L, -2, "GetFrameCount");
     }
     lua_pop(L, 1);
 
-    lua_register(L, "GifCreate", api_GifCreate);
+    lua_register(L, "GifCreate", GifCreate);
 }

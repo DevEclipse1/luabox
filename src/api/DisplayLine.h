@@ -15,7 +15,7 @@
  * @note The sprite uses 16-bit RGB565 color format.
  */
 
-int api_DisplayLine(lua_State* L_)
+int DisplayLine(lua_State* L_)
 {
     int x1 = luaL_checkinteger(L_, 1);
     int y1 = luaL_checkinteger(L_, 2);
