@@ -14,10 +14,17 @@ local player = {x = 6.0, y = 6.0, dir_x = -1.0, dir_y = 0.0}
 local plane_x, plane_y = 0, 0.66
 local display_size = DisplaySize()
 <<<<<<< HEAD
+<<<<<<< HEAD
 local move_speed, rot_speed = 0.05, 0.05
 =======
 local move_speed, rot_speed = 0.08, 0.15
 >>>>>>> f01e5a9 (updated raycaster, added ScriptMillis and Millis, api refactor)
+=======
+local move_speed, rot_speed = 0.08, 0.15
+=======
+local move_speed, rot_speed = 0.05, 0.05
+>>>>>>> b81d0539ed15e15538464c4933a6f111a2331451
+>>>>>>> 03e6a3807619dc464da8b3cbd61d305c90fa4527
 local map_size = 9
 local minimap_scale = 2
 local minimap_offset_x, minimap_offset_y = 2, 2
@@ -100,16 +107,10 @@ while true do
         DisplayLineV(x, draw_start, draw_end, wall_color)
 
         if draw_end < display_size.y - 1 then
-            local checker_size = 8
             local start_y = draw_end + 1
             local end_y = display_size.y - 1
-            local toggle = false
-            for y_line = start_y, end_y, checker_size do
-                local color = toggle and RGB(0, 200, 0) or RGB(0, 150, 0)
-                local y_end_line = math.min(y_line + checker_size - 1, end_y)
-                DisplayLineV(x, y_line, y_end_line, color)
-                toggle = not toggle
-            end
+            local color = RGB(0, 150, 0)
+            DisplayLineV(x, start_y, end_y, color)
         end
     end
 

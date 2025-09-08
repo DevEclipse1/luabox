@@ -4,6 +4,16 @@
 #include "global.h"
 #include "../gif.h"
 
+/**
+ * @brief Create a new GIF object.
+ * @param L Lua state; expects arguments: 
+ *        1: path (const char*) – path to the GIF file, 
+ *        2: x (int) – X position on screen, 
+ *        3: y (int) – Y position on screen.
+ * @return int Pushes 1 userdata to Lua stack: a LuaGif object.
+ * @note Allocates memory for a new Gif instance and wraps it as Lua userdata.
+*/
+
 int GifCreate(lua_State* L)
 {
     const char* path = luaL_checkstring(L, 1);
@@ -19,12 +29,28 @@ int GifCreate(lua_State* L)
     return 1;
 }
 
+/**
+ * @brief Play the GIF asynchronously.
+ * @param L Lua state; expects argument:
+ *        1: LuaGif userdata created by GifCreate.
+ * @return int Returns 0; starts GIF playback in async mode.
+ * @note Call this on a LuaGif object to start animation without blocking the main thread.
+*/
+
 int GifPlayAsync(lua_State* L)
 {
     Gif* gif = *(Gif**)luaL_checkudata(L, 1, "LuaGif");
     gif->PlayAsync();
     return 0;
 }
+
+/**
+ * @brief Stop the GIF playback.
+ * @param L Lua state; expects argument:
+ *        1: LuaGif userdata created by GifCreate.
+ * @return int Returns 0; stops the GIF playback.
+ * @note Call this on a LuaGif object to immediately halt animation.
+*/
 
 int GifStop(lua_State* L)
 {
