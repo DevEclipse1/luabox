@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.14.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>LuaBox: src/api/DisplayPrint.h File Reference</title>
+<title>LuaBox: src/api/DisplayCircle.h File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -62,7 +62,7 @@ $(function() {
   </div>
 </div>
 <script type="text/javascript">
-$(function(){initNavTree('_display_print_8h.html','',''); });
+$(function(){initNavTree('_display_circle_8h.html','',''); });
 </script>
 <div id="container">
 <div id="doc-content">
@@ -88,28 +88,28 @@ $(function(){initNavTree('_display_print_8h.html','',''); });
 </div>
 
 <div class="header">
-  <div class="headertitle"><div class="title">DisplayPrint.h File Reference</div></div>
+  <div class="headertitle"><div class="title">DisplayCircle.h File Reference</div></div>
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><code>#include &quot;lua_include.h&quot;</code><br />
 <code>#include &quot;global.h&quot;</code><br />
 </div>
-<p><a href="_display_print_8h_source.html">Go to the source code of this file.</a></p>
+<p><a href="_display_circle_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:aad429c7647830e525cba5b3e4fccfff8" id="r_aad429c7647830e525cba5b3e4fccfff8"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aad429c7647830e525cba5b3e4fccfff8">DisplayPrint</a> (lua_State *L_)</td></tr>
-<tr class="memdesc:aad429c7647830e525cba5b3e4fccfff8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Print a text string on the sprite buffer with optional scaling.  <br /></td></tr>
+<tr class="memitem:a0ccb42b5f14b0244a955230e019c0657" id="r_a0ccb42b5f14b0244a955230e019c0657"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0ccb42b5f14b0244a955230e019c0657">DisplayCircle</a> (lua_State *L_)</td></tr>
+<tr class="memdesc:a0ccb42b5f14b0244a955230e019c0657"><td class="mdescLeft">&#160;</td><td class="mdescRight">Draw a circle on the sprite buffer.  <br /></td></tr>
 </table>
 <a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Function Documentation</h2>
-<a id="aad429c7647830e525cba5b3e4fccfff8" name="aad429c7647830e525cba5b3e4fccfff8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aad429c7647830e525cba5b3e4fccfff8">&#9670;&#160;</a></span>DisplayPrint()</h2>
+<a id="a0ccb42b5f14b0244a955230e019c0657" name="a0ccb42b5f14b0244a955230e019c0657"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0ccb42b5f14b0244a955230e019c0657">&#9670;&#160;</a></span>DisplayCircle()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int DisplayPrint </td>
+          <td class="memname">int DisplayCircle </td>
           <td>(</td>
           <td class="paramtype">lua_State *</td>          <td class="paramname"><span class="paramname"><em>L_</em></span></td><td>)</td>
           <td></td>
@@ -117,11 +117,11 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Print a text string on the sprite buffer with optional scaling. </p>
-<p>This function prints a text string on the <span class="tt">sprite</span> buffer using the specified color and coordinates. An optional text size can be provided to scale the text.</p>
+<p>Draw a circle on the sprite buffer. </p>
+<p>This function draws the outline of a circle on the <span class="tt">sprite</span> buffer using the specified center coordinates, radius, and color.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">L_</td><td>Lua state; expects arguments in order: 1: text string 2: x (X coordinate) 3: y (Y coordinate) 4: color (16-bit RGB565 for the text) 5: text size (optional, default 1)</td></tr>
+    <tr><td class="paramname">L_</td><td>Lua state; expects arguments in order: 1: x (X coordinate of the circle center) 2: y (Y coordinate of the circle center) 3: r (Radius of the circle) 4: color (16-bit RGB565 color for the circle outline)</td></tr>
   </table>
   </dd>
 </dl>
@@ -143,7 +143,7 @@ Functions</h2></td></tr>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a href="dir_da61e3e9a357748887e3ca8d7c5a0c16.html">api</a></li><li class="navelem"><a href="_display_print_8h.html">DisplayPrint.h</a></li>
+    <li class="navelem"><a href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a href="dir_da61e3e9a357748887e3ca8d7c5a0c16.html">api</a></li><li class="navelem"><a href="_display_circle_8h.html">DisplayCircle.h</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.14.0 </li>
   </ul>
 </div>

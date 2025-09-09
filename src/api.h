@@ -9,6 +9,12 @@
 #include "api/DisplayLineH.h"
 #include "api/DisplayLineV.h"
 #include "api/DisplayPrint.h"
+#include "api/DisplayCircle.h"
+#include "api/DisplayCircleFilled.h"
+#include "api/DisplayGetPixel.h"
+#include "api/DisplayRect.h"
+#include "api/DisplayRectFilled.h"
+#include "api/DisplayTextSize.h"
 #include "api/DisplaySize.h"
 #include "api/DisplayBacklight.h"
 #include "api/DisplayDraw.h"
@@ -56,6 +62,24 @@ void api_register_functions()
 
     lua_pushcfunction(L, DisplayDraw);
     lua_setglobal(L, "DisplayDraw");
+
+    lua_pushcfunction(L, DisplayCircle);
+    lua_setglobal(L, "DisplayCircle");
+
+    lua_pushcfunction(L, DisplayCircleFilled);
+    lua_setglobal(L, "DisplayCircleFilled");
+
+    lua_pushcfunction(L, DisplayGetPixel);
+    lua_setglobal(L, "DisplayGetPixel");
+
+    lua_pushcfunction(L, DisplayRect);
+    lua_setglobal(L, "DisplayRect");
+
+    lua_pushcfunction(L, DisplayRectFilled);
+    lua_setglobal(L, "DisplayRectFilled");
+
+    lua_pushcfunction(L, DisplayTextSize);
+    lua_setglobal(L, "DisplayTextSize");
 
     // common
 

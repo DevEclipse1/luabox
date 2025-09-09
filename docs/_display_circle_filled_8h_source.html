@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.14.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>LuaBox: src/api/DisplayPrint.h File Reference</title>
+<title>LuaBox: src/api/DisplayCircleFilled.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -62,7 +62,7 @@ $(function() {
   </div>
 </div>
 <script type="text/javascript">
-$(function(){initNavTree('_display_print_8h.html','',''); });
+$(function(){initNavTree('_display_circle_filled_8h_source.html','',''); });
 </script>
 <div id="container">
 <div id="doc-content">
@@ -88,62 +88,35 @@ $(function(){initNavTree('_display_print_8h.html','',''); });
 </div>
 
 <div class="header">
-  <div class="headertitle"><div class="title">DisplayPrint.h File Reference</div></div>
+  <div class="headertitle"><div class="title">DisplayCircleFilled.h</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &quot;lua_include.h&quot;</code><br />
-<code>#include &quot;global.h&quot;</code><br />
+<a href="_display_circle_filled_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#pragma once</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span> </div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#include &quot;lua_include.h&quot;</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &quot;global.h&quot;</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span></div>
+<div class="foldopen" id="foldopen00022" data-start="{" data-end="}">
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno"><a class="line" href="_display_circle_filled_8h.html#a0e57e0000d363f847cf0585be39e31ae">   22</a></span><span class="keywordtype">int</span> <a class="code hl_function" href="_display_circle_filled_8h.html#a0e57e0000d363f847cf0585be39e31ae">DisplayCircleFilled</a>(lua_State* L_)</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>{</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    <span class="keywordtype">int</span> x = luaL_checkinteger(L_, 1);</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    <span class="keywordtype">int</span> y = luaL_checkinteger(L_, 2);</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    <span class="keywordtype">int</span> r = luaL_checkinteger(L_, 3);</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    <span class="keywordtype">int</span> c = luaL_checkinteger(L_, 4);</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    sprite.fillCircle(x, y, r, c);</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span> </div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>}</div>
 </div>
-<p><a href="_display_print_8h_source.html">Go to the source code of this file.</a></p>
-<table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
-Functions</h2></td></tr>
-<tr class="memitem:aad429c7647830e525cba5b3e4fccfff8" id="r_aad429c7647830e525cba5b3e4fccfff8"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aad429c7647830e525cba5b3e4fccfff8">DisplayPrint</a> (lua_State *L_)</td></tr>
-<tr class="memdesc:aad429c7647830e525cba5b3e4fccfff8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Print a text string on the sprite buffer with optional scaling.  <br /></td></tr>
-</table>
-<a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Function Documentation</h2>
-<a id="aad429c7647830e525cba5b3e4fccfff8" name="aad429c7647830e525cba5b3e4fccfff8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aad429c7647830e525cba5b3e4fccfff8">&#9670;&#160;</a></span>DisplayPrint()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int DisplayPrint </td>
-          <td>(</td>
-          <td class="paramtype">lua_State *</td>          <td class="paramname"><span class="paramname"><em>L_</em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Print a text string on the sprite buffer with optional scaling. </p>
-<p>This function prints a text string on the <span class="tt">sprite</span> buffer using the specified color and coordinates. An optional text size can be provided to scale the text.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">L_</td><td>Lua state; expects arguments in order: 1: text string 2: x (X coordinate) 3: y (Y coordinate) 4: color (16-bit RGB565 for the text) 5: text size (optional, default 1)</td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>int Returns 0; no values are pushed to the Lua stack.</dd></dl>
-<dl class="section note"><dt>Note</dt><dd>Uses 16-bit RGB565 color format for the sprite buffer. </dd></dl>
-
-</div>
-</div>
-</div><!-- contents -->
+<div class="ttc" id="a_display_circle_filled_8h_html_a0e57e0000d363f847cf0585be39e31ae"><div class="ttname"><a href="_display_circle_filled_8h.html#a0e57e0000d363f847cf0585be39e31ae">DisplayCircleFilled</a></div><div class="ttdeci">int DisplayCircleFilled(lua_State *L_)</div><div class="ttdoc">Draw a filled circle on the sprite buffer.</div><div class="ttdef"><b>Definition</b> DisplayCircleFilled.h:22</div></div>
+</div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
-<div id="page-nav" class="page-nav-panel">
-<div id="page-nav-resize-handle"></div>
-<div id="page-nav-tree">
-<div id="page-nav-contents">
-</div><!-- page-nav-contents -->
-</div><!-- page-nav-tree -->
-</div><!-- page-nav -->
 </div><!-- container -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a href="dir_da61e3e9a357748887e3ca8d7c5a0c16.html">api</a></li><li class="navelem"><a href="_display_print_8h.html">DisplayPrint.h</a></li>
+    <li class="navelem"><a href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a href="dir_da61e3e9a357748887e3ca8d7c5a0c16.html">api</a></li><li class="navelem"><a href="_display_circle_filled_8h.html">DisplayCircleFilled.h</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.14.0 </li>
   </ul>
 </div>
